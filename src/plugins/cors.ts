@@ -1,7 +1,7 @@
-import { FastifyInstance, FastifyPluginOptions } from "fastify";
+import { FastifyInstance, FastifyPluginOptions } from 'fastify'
 import fs from 'fastify-plugin'
 
-import fastifyCors, { FastifyCorsOptions } from "@fastify/cors";
+import fastifyCors, { FastifyCorsOptions } from '@fastify/cors'
 
 import env from '@/utils/env'
 
@@ -27,7 +27,7 @@ const corsOptions: FastifyCorsOptions = {
             // deny
             cb(new Error('Not Allowed'), false)
         }
-    }
+    },
 }
 
 export default fs(async function (server: FastifyInstance, options: FastifyPluginOptions, done: CallableFunction) {

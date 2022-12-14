@@ -11,7 +11,7 @@ import env from '@/utils/env'
 // server config
 const opts: FastifyListenOptions = {
     host: env.HOST,
-    port: env.PORT
+    port: env.PORT,
 }
 
 // logger config
@@ -25,12 +25,12 @@ const envToLogger = {
             },
         },
     },
-    production: true
+    production: true,
 }
 
 // fastify instance
 const Server = fastify({
-    logger: envToLogger[env.ENVIRONMENT]
+    logger: envToLogger[env.ENVIRONMENT],
 })
 
 // autoload plugins and routes
@@ -40,14 +40,14 @@ Server.register(fastifyAutoload, { dir: path.join(__dirname, 'routes') })
 // root
 Server.get('/', (requst, reply) => {
     return {
-        "message": `Visit http://${env.HOST}:${env.PORT}/docs for swagger documentation.`
+        message: `Visit http://${env.HOST}:${env.PORT}/docs for swagger documentation.`,
     }
 })
 
 // boot process
-Server.ready(e => {
-    if(e) throw e
-    else console.log('All plugins has benn loaded.')
+Server.ready((e) => {
+    if (e) throw e
+    else console.log('Ready!!!')
 })
 
 // listen

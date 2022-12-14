@@ -1,25 +1,24 @@
-import { FastifyInstance, FastifyPluginOptions } from "fastify";
+import { FastifyInstance, FastifyPluginOptions } from 'fastify'
 import fs from 'fastify-plugin'
 
-import fastifySwagger from "@fastify/swagger";
-import fastifySwaggerUi from "@fastify/swagger-ui";
+import fastifySwagger from '@fastify/swagger'
+import fastifySwaggerUi from '@fastify/swagger-ui'
 
-import { getAppVersion } from "@/utils/misc";
-import env from "@/utils/env";
+import { getAppVersion } from '@/utils/misc'
+import env from '@/utils/env'
 
 export default fs(async function (server: FastifyInstance, _options: FastifyPluginOptions, done: CallableFunction) {
-
-    if (env.ENVIRONMENT == "development") {
+    if (env.ENVIRONMENT == 'development') {
         server.register(fastifySwagger, {
             swagger: {
                 info: {
                     title: 'Kickstart Fastify',
                     description: 'Swagger API documentation',
-                    version: getAppVersion()
+                    version: getAppVersion(),
                 },
                 externalDocs: {
                     url: 'https://swagger.io',
-                    description: 'Find more info here'
+                    description: 'Find more info here',
                 },
                 host: `${env.HOST}:${env.PORT}`,
                 schemes: ['http'],
@@ -29,13 +28,13 @@ export default fs(async function (server: FastifyInstance, _options: FastifyPlug
                     apiKey: {
                         type: 'apiKey',
                         name: 'apiKey',
-                        in: 'header'
-                    }
-                }
-            }
+                        in: 'header',
+                    },
+                },
+            },
         })
         server.register(fastifySwaggerUi, {
-            routePrefix: '/docs'
+            routePrefix: '/docs',
         })
     }
     done()
