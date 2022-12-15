@@ -1,4 +1,5 @@
 import { FastifyReply, FastifyRequest, RouteHandlerMethod } from 'fastify'
+import { StatusCodes } from 'http-status-codes'
 import { GetTaskByTaskIdParams } from './parameter'
 import { GetTasksResponse, GetTasksResult } from './response'
 
@@ -24,6 +25,8 @@ export const getTaskByTaskIdHandler: RouteHandlerMethod = async function (reques
     const response: GetTasksResponse = {
         result: result,
     }
+
+    reply.status(StatusCodes.OK)
 
     return response
 }

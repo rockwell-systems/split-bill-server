@@ -1,4 +1,5 @@
 import { FastifyReply, FastifyRequest, RouteHandlerMethod } from 'fastify'
+import { StatusCodes } from 'http-status-codes'
 import { GetTasksQuery } from './query'
 import { GetTasksResponse, GetTasksResult } from './response'
 
@@ -27,6 +28,8 @@ export const getTaskHandler: RouteHandlerMethod = async function (request: Fasti
     const response: GetTasksResponse = {
         result: result,
     }
+
+    reply.status(StatusCodes.OK)
 
     return response
 }

@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model task {
+model Task {
   taskId     String   @id @db.VarChar(12)
   taskName   String   @db.VarChar(100)
   taskColor  String   @db.VarChar(20)
