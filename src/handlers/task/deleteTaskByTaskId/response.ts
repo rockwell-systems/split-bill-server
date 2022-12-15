@@ -2,7 +2,7 @@ import { domain } from '@/src/domains/domains'
 import { Static, Type } from '@sinclair/typebox'
 import { DefaultResponse } from '../../shared/defaultResponse'
 
-export const deleteTasksByTaskIdResult = Type.Null()
+export const deleteTasksByTaskIdResult = Type.Unsafe()
 export const deleteTasksByTaskIdResponse: DefaultResponse<typeof deleteTasksByTaskIdResult> = {
     result: deleteTasksByTaskIdResult,
 }

@@ -14,6 +14,6 @@ export const deleteTaskByTaskIdSchema: FastifySchema = {
     description: description,
     params: deleteTaskByTaskIdParams,
     response: {
-        200: deleteTasksByTaskIdResponse,
+        204: deleteTasksByTaskIdResponse,
     },
 }
