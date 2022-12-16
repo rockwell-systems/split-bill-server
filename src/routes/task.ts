@@ -1,3 +1,5 @@
+import 'module-alias/register'
+
 // Fastify framework
 import { FastifyInstance, FastifyPluginOptions } from 'fastify'
 import fs from 'fastify-plugin'
@@ -8,7 +10,7 @@ import { getTaskHandler } from '@/handlers/task/getTasks/handler'
 
 // getTaskByTaskId
 import { getTaskByTaskIdSchema } from '@/handlers/task/getTaskByTaskId/schema'
-import { getTaskByTaskIdHandler } from '../handlers/task/getTaskByTaskId/handler'
+import { getTaskByTaskIdHandler } from '@/handlers/task/getTaskByTaskId/handler'
 
 // deleteTaskByTaskId
 import { deleteTaskByTaskIdSchema } from '@/handlers/task/deleteTaskByTaskId/schema'

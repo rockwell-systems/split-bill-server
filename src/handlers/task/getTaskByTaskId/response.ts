@@ -1,4 +1,5 @@
-import { domain } from '@/src/domains/domains'
+import 'module-alias/register'
+import { domain } from '@/domains/domains'
 import { Static, Type } from '@sinclair/typebox'
 import { DefaultResponse } from '../../shared/defaultResponse'
 

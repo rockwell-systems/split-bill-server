@@ -1,4 +1,5 @@
-import { domainOptional } from '@/src/domains/domains'
+import 'module-alias/register'
+import { domainOptional } from '@/domains/domains'
 import { Static, Type } from '@sinclair/typebox'
 
 export const getTaskByTaskIdParams = Type.Object({

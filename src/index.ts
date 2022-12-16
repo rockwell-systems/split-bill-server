@@ -1,3 +1,5 @@
+import 'module-alias/register'
+
 // node cores
 import path from 'path'
 
@@ -7,6 +9,7 @@ import fastifyAutoload from '@fastify/autoload'
 
 // utils
 import env from '@/utils/env'
+import { getAppVersion } from '@/utils/misc'
 
 // server config
 const opts: FastifyListenOptions = {
@@ -39,9 +42,8 @@ Server.register(fastifyAutoload, { dir: path.join(__dirname, 'routes') })
 
 // root
 Server.get('/', (requst, reply) => {
-    return {
-        message: `Visit http://${env.HOST}:${env.PORT}/docs for swagger documentation.`,
-    }
+    reply.send({ name: 'Kickstart Fastify', version: getAppVersion(), message: 'Welcome to open sea.' })
+    return
 })
 
 // boot process

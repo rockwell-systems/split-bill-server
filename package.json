@@ -3,6 +3,9 @@
     "version": "0.1.0",
     "description": "",
     "main": "index.js",
+    "_moduleAliases": {
+        "@": "dist/src"
+    },
     "scripts": {
         "dev": "ts-node -r tsconfig-paths/register ./src/index.ts"
     },
@@ -31,9 +34,11 @@
         "env-schema": "^5.1.0",
         "fastify": "^4.10.2",
         "fastify-plugin": "^4.4.0",
-        "http-status-codes": "^2.2.0"
+        "http-status-codes": "^2.2.0",
+        "module-alias": "^2.2.2"
     },
     "devDependencies": {
+        "@types/module-alias": "^2.0.1",
         "@types/node": "^18.11.0",
         "pino-pretty": "^9.1.1",
         "prettier": "2.8.1",
