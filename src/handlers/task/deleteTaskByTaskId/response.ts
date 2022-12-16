@@ -1,4 +1,3 @@
-import { domain } from '@/src/domains/domains'
 import { Static, Type } from '@sinclair/typebox'
 import { DefaultResponse } from '../../shared/defaultResponse'
 

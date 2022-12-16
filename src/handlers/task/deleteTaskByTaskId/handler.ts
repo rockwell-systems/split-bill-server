@@ -1,10 +1,9 @@
-import { FastifyReply, FastifyRequest, RouteHandlerMethod } from 'fastify'
+import { RouteHandlerMethod } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
-import { ReasonPhrases } from 'http-status-codes/build/cjs/reason-phrases'
 import { DeleteTaskByTaskIdParams } from './parameter'
 import { DeleteTaskByTaskIdResult, DeleteTaskByTaskIdResponse } from './response'
 
-export const deleteTaskByTaskIdHandler: RouteHandlerMethod = async function (request: FastifyRequest, reply: FastifyReply) {
+export const deleteTaskByTaskIdHandler: RouteHandlerMethod = async function (request, reply): Promise<DeleteTaskByTaskIdResponse> {
     const params = <DeleteTaskByTaskIdParams>request.query
 
     await this.prisma.task.delete({

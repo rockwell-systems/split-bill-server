@@ -1,9 +1,10 @@
-import { FastifyReply, FastifyRequest, RouteHandlerMethod } from 'fastify'
+import { HttpError } from '@fastify/sensible/lib/httpError'
+import { RouteHandlerMethod } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { GetTaskByTaskIdParams } from './parameter'
 import { GetTasksResponse, GetTasksResult } from './response'
 
-export const getTaskByTaskIdHandler: RouteHandlerMethod = async function (request: FastifyRequest, reply: FastifyReply) {
+export const getTaskByTaskIdHandler: RouteHandlerMethod = async function (request, reply): Promise<GetTasksResponse | HttpError> {
     const params = <GetTaskByTaskIdParams>request.query
 
     const task = await this.prisma.task.findUnique({

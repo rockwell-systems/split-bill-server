@@ -1,9 +1,9 @@
-import { FastifyReply, FastifyRequest, RouteHandlerMethod } from 'fastify'
+import { RouteHandlerMethod } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { GetTasksQuery } from './query'
 import { GetTasksResponse, GetTasksResult } from './response'
 
-export const getTaskHandler: RouteHandlerMethod = async function (request: FastifyRequest, reply: FastifyReply) {
+export const getTaskHandler: RouteHandlerMethod = async function (request, reply): Promise<GetTasksResponse> {
     const query = <GetTasksQuery>request.query
     const tasks = await this.prisma.task.findMany({
         where: {
