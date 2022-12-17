@@ -1,5 +1,5 @@
 import { TaskStatus } from '@prisma/client'
-import { Static, Type } from '@sinclair/typebox'
+import { Type } from '@sinclair/typebox'
 
 export const domain = {
     taskId: Type.String({ minLength: 12, maxLength: 12 }),
