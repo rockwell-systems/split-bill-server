@@ -5,7 +5,7 @@ import { getTasksByTaskIdResponse } from './response'
 const description = `
 # Get Task by taskId
 You can use some markdown syntaxs like header, lists and text formattings.
-It might be nice to describe your api overivew here.
+It would be nice to describe your api overivew here.
 `
 
 export const getTaskByTaskIdSchema: FastifySchema = {

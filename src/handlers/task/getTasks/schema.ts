@@ -5,7 +5,7 @@ import { getTasksResponse } from './response'
 const description = `
 # Get Tasks
 You can use some markdown syntaxs like header, lists and text formattings.
-It might be nice to describe your api overivew here.
+It would be nice to describe your api overivew here.
 `
 
 export const getTaskSchema: FastifySchema = {
