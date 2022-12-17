@@ -45,8 +45,8 @@ JWT_PUBLIC_KEY_PATH="/absolute-path-to/public.pub"
 ```
 `DATABASE_URL` ကို No.4 မှာ တည်ဆောက်ခဲ့တဲ့ database info အတိုင်းအစားထိုးပေးပါ။ `JWT_PRIVATE_KEY_PATH` နဲ့ `JWT_PUBLIC_KEY_PATH` ကို No.5 မှာ generate လုပ်ခဲ့တဲ့ key ‌တွေရဲ့ absolute path တွေနဲ့ အစားထိုးပေးပါ။
 
-# Migrate
-လက်ရှိ repo ထဲမှာ `prisma` ဆိုတဲ့ folder ရှိပါတယ်။ အဲထဲမှာမှ `schema.prisma` က ကျွန်တော်တို့ project ထဲမှာ ဘယ်လို databse table တွေ ပါဝင်မယ်ဆိုတာကို ‌ရေးထားရမှာပါ။ ခုချိန်မှာ နမူနာ‌အနေနဲ့ User နဲ့ Product ဆိုတဲ့ table နှစ်ခုရှိနေမှာပါလိမ့်မယ်။
+### Migrate
+လက်ရှိ repo ထဲမှာ `prisma` ဆိုတဲ့ folder ရှိပါတယ်။ အဲထဲမှာမှ `schema.prisma` က ကျွန်တော်တို့ project ထဲမှာ ဘယ်လို databse table တွေ ပါဝင်မယ်ဆိုတာကို ‌ရေးထားရမှာပါ။ ခုချိန်မှာ နမူနာ‌အနေနဲ့ User နဲ့ Product ဆိုတဲ့ table နှစ်ခုရှိနေလိမ့်မယ်။
 ```
 model User {
   userId     String     @id @db.VarChar(12)
@@ -66,4 +66,8 @@ model Product {
   createdAt          DateTime @default(now()) @db.Timestamp()
   updatedAt          DateTime @default(now()) @db.Timestamp()
 }
+```
+ဒါက definition အနေနဲ့ပဲ ရှိနေသေးတာမို့လို့ database မှာ သွားပြီး table တွေ မဖန်တီးရသေးပါဘူး။ တကယ်ဖန်တီးဖို့အတွက် ‌အောက်က command ကို run ပေးဖို့လိုပါတယ်
+```
+npx prisma migrate dev
 ```
