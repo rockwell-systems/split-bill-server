@@ -7,7 +7,8 @@
         "@": "dist/src"
     },
     "scripts": {
-        "dev": "ts-node -r tsconfig-paths/register ./src/index.ts"
+        "auto_build": "npx tsc -w",
+        "hot_reload": "nodemon ./dist/src/index.js"
     },
     "repository": {
         "type": "git",
@@ -40,6 +41,10 @@
     "devDependencies": {
         "@types/module-alias": "^2.0.1",
         "@types/node": "^18.11.0",
+        "@typescript-eslint/eslint-plugin": "^5.46.1",
+        "@typescript-eslint/parser": "^5.46.1",
+        "eslint": "^8.30.0",
+        "nodemon": "^2.0.20",
         "pino-pretty": "^9.1.1",
         "prettier": "2.8.1",
         "prisma": "^4.7.1",
