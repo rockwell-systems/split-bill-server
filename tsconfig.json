@@ -9,6 +9,7 @@
         },
         "outDir": "./dist",
         "noEmitOnError": true,
+        "sourceMap": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
