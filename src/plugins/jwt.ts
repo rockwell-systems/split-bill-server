@@ -1,14 +1,8 @@
-// node core
 import { readFileSync } from 'fs'
-
-// fastify
 import { FastifyInstance, FastifyPluginOptions } from 'fastify'
 import fs from 'fastify-plugin'
 import fastifyJwt, { FastifyJWTOptions } from '@fastify/jwt'
-
-// constants
 import { SYS_CONSTANTS } from '@/constants/sytemConstants'
-// utils
 import env from '@/utils/env'
 
 // read key files

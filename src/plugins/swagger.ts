@@ -1,9 +1,7 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify'
 import fs from 'fastify-plugin'
-
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUi from '@fastify/swagger-ui'
-
 import { getAppVersion } from '@/utils/misc'
 import env from '@/utils/env'
 

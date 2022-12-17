@@ -1,14 +1,10 @@
-// module alias resolver
+// resolve module alias
 import 'module-alias/register'
 
-// node cores
+// imports
 import path from 'path'
-
-// fastify, fastify plugins
 import fastify, { FastifyListenOptions } from 'fastify'
 import fastifyAutoload from '@fastify/autoload'
-
-// utils
 import env from '@/utils/env'
 import { getAppVersion } from '@/utils/misc'
 
