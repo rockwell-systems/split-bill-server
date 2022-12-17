@@ -7,8 +7,9 @@
         "@": "dist/src"
     },
     "scripts": {
-        "auto_build": "npx tsc -w",
-        "hot_reload": "nodemon ./dist/src/index.js"
+        "dev": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/src/index.js\"",
+        "build": "tsc",
+        "start": "node ./dist/src/index.js"
     },
     "repository": {
         "type": "git",
@@ -49,6 +50,7 @@
         "prettier": "2.8.1",
         "prisma": "^4.7.1",
         "ts-node": "^10.9.1",
+        "tsc-watch": "^6.0.0",
         "typescript": "^4.8.4"
     }
 }
