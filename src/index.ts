@@ -1,3 +1,4 @@
+// module alias resolver
 import 'module-alias/register'
 
 // node cores

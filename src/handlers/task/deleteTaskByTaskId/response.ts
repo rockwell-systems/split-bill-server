@@ -1,4 +1,3 @@
-import 'module-alias/register'
 import { Static, Type } from '@sinclair/typebox'
 import { DefaultResponse } from '@/handlers/shared/defaultResponse'
 

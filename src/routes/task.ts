@@ -1,7 +1,4 @@
-import 'module-alias/register'
-
-// Fastify framework
-import { FastifyInstance, FastifyPluginOptions } from 'fastify'
+import { FastifyInstance } from 'fastify'
 import fs from 'fastify-plugin'
 
 // getTasks
@@ -17,10 +14,11 @@ import { deleteTaskByTaskIdSchema } from '@/handlers/task/deleteTaskByTaskId/sch
 import { deleteTaskByTaskIdHandler } from '@/handlers/task/deleteTaskByTaskId/handler'
 
 const RootRoute = '/task'
+const taskId = ':taskId'
 
 // Router plugin
-export default fs(async function (Server: FastifyInstance, Options: FastifyPluginOptions) {
-    Server.get(`${RootRoute}`, { schema: getTaskSchema }, getTaskHandler)
-    Server.get(`${RootRoute}/:taskId`, { schema: getTaskByTaskIdSchema }, getTaskByTaskIdHandler)
-    Server.delete(`${RootRoute}/:taskId`, { schema: deleteTaskByTaskIdSchema }, deleteTaskByTaskIdHandler)
+export default fs(async function (server: FastifyInstance) {
+    server.get(`${RootRoute}`, { schema: getTaskSchema }, getTaskHandler)
+    server.get(`${RootRoute}/${taskId}`, { schema: getTaskByTaskIdSchema }, getTaskByTaskIdHandler)
+    server.delete(`${RootRoute}/${taskId}`, { schema: deleteTaskByTaskIdSchema }, deleteTaskByTaskIdHandler)
 })

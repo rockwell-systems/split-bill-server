@@ -9,11 +9,16 @@ import env from '@/utils/env'
 const allowedOrigins = env.ALLOWED_ORIGINS.split(',')
 const corsOptions: FastifyCorsOptions = {
     origin: (origin, cb) => {
-        // from browsers
         if (!origin) {
-            // pass
-            cb(null, true)
-            return
+            if (env.ENVIRONMENT === 'development') {
+                // allow unknown origin in development mode
+                cb(null, true)
+                return
+            } else {
+                // deny
+                cb(new Error('Not Allowed'), false)
+                return
+            }
         }
 
         // from remote origins
@@ -23,10 +28,10 @@ const corsOptions: FastifyCorsOptions = {
             // pass
             cb(null, true)
             return
-        } else {
-            // deny
-            cb(new Error('Not Allowed'), false)
         }
+
+        // deny
+        cb(new Error('Not Allowed'), false)
     },
 }
 
