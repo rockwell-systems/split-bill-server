@@ -1,12 +1,12 @@
-import { domain } from '@/domains/domains'
+import { field } from '@/schemas/fields'
 import { Static, Type } from '@sinclair/typebox'
 import { DefaultResponse } from '@/handlers/base/defaultResponse'
 
 export const updateProductResult = Type.Object({
-    productId: domain.productId,
-    productName: domain.productName,
-    productDescription: domain.productDescription,
-    productPrice: domain.productPrice,
+    productId: field.productId,
+    productName: field.productName,
+    productDescription: field.productDescription,
+    productPrice: field.productPrice,
 })
 
 export const updateProductResponse: DefaultResponse<typeof updateProductResult> = {

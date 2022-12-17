@@ -1,12 +1,12 @@
-import { domainOptional } from '@/domains/domains'
+import { fieldOptional } from '@/schemas/fields'
 import { Static, Type } from '@sinclair/typebox'
 
 export const getProductsQuery = Type.Object({
-    productId: domainOptional.productId,
-    productName: domainOptional.productName,
-    productDescription: domainOptional.productDescription,
-    productPriceFrom: domainOptional.productPrice,
-    productPriceTo: domainOptional.productPrice,
+    productId: fieldOptional.productId,
+    productName: fieldOptional.productName,
+    productDescription: fieldOptional.productDescription,
+    productPriceFrom: fieldOptional.productPrice,
+    productPriceTo: fieldOptional.productPrice,
 })
 
 export type GetProductsQuery = Static<typeof getProductsQuery>
