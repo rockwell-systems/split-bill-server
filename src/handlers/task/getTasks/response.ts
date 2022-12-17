@@ -5,7 +5,8 @@ import { DefaultResponse } from '@/handlers/shared/defaultResponse'
 export const getTasksResult = Type.Array(
     Type.Object({
         taskId: domain.taskId,
-        taskName: domain.taskName,
+        taskTitle: domain.taskTitle,
+        taskDescription: domain.taskDescription,
         taskColor: domain.taskColor,
         taskStatus: domain.taskStatus,
     })

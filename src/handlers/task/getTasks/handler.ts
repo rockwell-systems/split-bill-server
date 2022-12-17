@@ -8,8 +8,8 @@ export const getTaskHandler: RouteHandlerMethod = async function (request, reply
     const tasks = await this.prisma.task.findMany({
         where: {
             taskId: query.taskId,
-            taskName: {
-                contains: query.taskName,
+            taskTitle: {
+                contains: query.taskTitle,
             },
             taskColor: query.taskColor,
             taskStatus: query.taskStatus,
@@ -19,8 +19,9 @@ export const getTaskHandler: RouteHandlerMethod = async function (request, reply
     const result: GetTasksResult = tasks.map((x) => {
         return {
             taskId: x.taskId,
-            taskName: x.taskName,
-            taskColor: x.taskName,
+            taskTitle: x.taskTitle,
+            taskDescription: x.taskDescription,
+            taskColor: x.taskColor,
             taskStatus: x.taskStatus,
         }
     })

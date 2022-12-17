@@ -19,7 +19,8 @@ export const getTaskByTaskIdHandler: RouteHandlerMethod = async function (reques
 
     const result: GetTasksResult = {
         taskId: task.taskId,
-        taskName: task.taskName,
+        tasktTitle: task.taskTitle,
+        tasktDescription: task.taskDescription,
         taskColor: task.taskColor,
         taskStatus: task.taskStatus,
     }

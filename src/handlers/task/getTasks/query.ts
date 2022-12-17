@@ -3,7 +3,7 @@ import { Static, Type } from '@sinclair/typebox'
 
 export const getTasksQuery = Type.Object({
     taskId: domainOptional.taskId,
-    taskName: domainOptional.taskName,
+    taskTitle: domainOptional.taskTitle,
     taskColor: domainOptional.taskColor,
     taskStatus: domainOptional.taskStatus,
 })

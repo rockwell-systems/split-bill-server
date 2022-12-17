@@ -4,7 +4,8 @@ import { DefaultResponse } from '../../shared/defaultResponse'
 
 export const getTasksByTaskIdResult = Type.Object({
     taskId: domain.taskId,
-    taskName: domain.taskName,
+    tasktTitle: domain.taskTitle,
+    tasktDescription: domain.taskDescription,
     taskColor: domain.taskColor,
     taskStatus: domain.taskStatus,
 })
