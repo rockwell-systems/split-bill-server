@@ -1,7 +1,7 @@
 # Kickstart Fastify
 Fastify ကိုအသုံးပြုပြီး project အသစ်တစ်ခု‌စရေးဖို့ ရှိနေတယ်ဆိုရင် ဒီ repo က မင်းအတွက်အသုံးဝင်မယ်လိုမျှော်လင့်ရပါတယ်။ ဒီ repo ထဲမှာ fasitfy service တစ်ခုရေးသားဖို့ အခြေခံကျတဲ့လိုအပ်ချက်တွေကို ကြိုတင်ထည့်သွင်းပြီးတည်ဆောက်ပေးထားပါတယ်။
 
-## Quick start
+## Get started
 ### 1. Clone this repo
 ``` console
  git clone https://github.com/KaungWai/kickstart-fastify.git
