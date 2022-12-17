@@ -1,4 +1,4 @@
-import { TaskStatus } from '@prisma/client'
+import { Permission } from '@prisma/client'
 import { Type } from '@sinclair/typebox'
 
 const sharedDomain = {
@@ -9,24 +9,22 @@ export const domain = {
     // User
     userId: sharedDomain.id,
     userName: Type.String({ minLength: 1, maxLength: 100 }),
-    // Task
-    taskId: sharedDomain.id,
-    taskTitle: Type.String({ minLength: 1, maxLength: 100 }),
-    taskDescription: Type.String({ minLength: 1, maxLength: 500 }),
-    taskColor: Type.RegEx(new RegExp('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$'), {
-        examples: ['#00ff00', '#ff00ff'],
-    }),
-    taskStatus: Type.Enum(TaskStatus),
+    permisson: Type.Enum(Permission),
+    // Product
+    productId: sharedDomain.id,
+    productName: Type.String({ minLength: 1, maxLength: 100 }),
+    productDescription: Type.String({ minLength: 1, maxLength: 500 }),
+    productPrice: Type.Number({ minimum: 1 }),
 }
 
 export const domainOptional: typeof domain = {
     // User
     userId: Type.Optional(domain.userId),
     userName: Type.Optional(domain.userName),
+    permisson: Type.Optional(domain.permisson),
     // Task
-    taskId: Type.Optional(domain.taskId),
-    taskTitle: Type.Optional(domain.taskTitle),
-    taskDescription: Type.Optional(domain.taskDescription),
-    taskColor: Type.Optional(domain.taskColor),
-    taskStatus: Type.Optional(domain.taskStatus),
+    productId: Type.Optional(domain.productId),
+    productName: Type.Optional(domain.productName),
+    productDescription: Type.Optional(domain.productDescription),
+    productPrice: Type.Optional(domain.productPrice),
 }
