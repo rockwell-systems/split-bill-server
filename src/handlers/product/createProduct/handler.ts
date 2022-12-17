@@ -6,14 +6,14 @@ import { CreateProductRequest } from './request'
 import { CreateProductResponse, CreateProductResult } from './response'
 
 export const createProductHandler: RouteHandlerMethod = async function (request, reply): Promise<CreateProductResponse> {
-    const input = request.body as CreateProductRequest
+    const body = request.body as CreateProductRequest
 
     const productInserted = await this.prisma.product.create({
         data: {
             productId: nanoid(SYS_CONSTANTS.NANOID_LENGTH),
-            productName: input.productName,
-            productDescription: input.productDescription,
-            productPrice: input.productPrice,
+            productName: body.productName,
+            productDescription: body.productDescription,
+            productPrice: body.productPrice,
         },
     })
 

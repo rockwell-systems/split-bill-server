@@ -14,6 +14,6 @@ export const getProductByIdSchema: FastifySchema = {
     description: description,
     params: getProductByIdParams,
     response: {
-        204: getProductByIdResponse,
+        200: getProductByIdResponse,
     },
 }

@@ -1,19 +1,30 @@
+import { HttpError } from '@fastify/sensible/lib/httpError'
 import { RouteHandlerMethod } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { UpdateProductRequest } from './request'
 import { UpdateProductResponse, UpdateProductResult } from './response'
 
-export const updateProductHandler: RouteHandlerMethod = async function (request, reply): Promise<UpdateProductResponse> {
-    const input = request.body as UpdateProductRequest
+export const updateProductHandler: RouteHandlerMethod = async function (request, reply): Promise<UpdateProductResponse | HttpError> {
+    const body = request.body as UpdateProductRequest
+
+    const product = await this.prisma.product.findUnique({
+        where: {
+            productId: body.productId,
+        },
+    })
+
+    if (!product) {
+        return this.httpErrors.notFound('Product not found.')
+    }
 
     const productUpdated = await this.prisma.product.update({
         where: {
-            productId: input.productId,
+            productId: body.productId,
         },
         data: {
-            productName: input.productName,
-            productDescription: input.productDescription,
-            productPrice: input.productPrice,
+            productName: body.productName,
+            productDescription: body.productDescription,
+            productPrice: body.productPrice,
             updatedAt: new Date(),
         },
     })

@@ -5,7 +5,7 @@ import { GetProductByIdParams } from './parameter'
 import { GetProductByIdResult, GetProductByIdResponse } from './response'
 
 export const getProductByIdHandler: RouteHandlerMethod = async function (request, reply): Promise<GetProductByIdResponse | HttpError> {
-    const params = request.query as GetProductByIdParams
+    const params = request.params as GetProductByIdParams
 
     const product = await this.prisma.product.findUnique({
         where: {
@@ -28,7 +28,7 @@ export const getProductByIdHandler: RouteHandlerMethod = async function (request
         result: result,
     }
 
-    reply.status(StatusCodes.NO_CONTENT)
+    reply.status(StatusCodes.OK)
 
     return response
 }
