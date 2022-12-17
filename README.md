@@ -46,4 +46,24 @@ JWT_PUBLIC_KEY_PATH="/absolute-path-to/public.pub"
 `DATABASE_URL` ကို No.4 မှာ တည်ဆောက်ခဲ့တဲ့ database info အတိုင်းအစားထိုးပေးပါ။ `JWT_PRIVATE_KEY_PATH` နဲ့ `JWT_PUBLIC_KEY_PATH` ကို No.5 မှာ generate လုပ်ခဲ့တဲ့ key ‌တွေရဲ့ absolute path တွေနဲ့ အစားထိုးပေးပါ။
 
 # Migrate
-လက်ရှိ repo ထဲမှာ `prisma` ဆိုတဲ့ folder ရှိပါတယ်။ အဲထဲမှာမှ `schema.prisma` က ကျွန်တော်တို့ project ထဲမှာ ဘယ်လို databse table တွေ ပါဝင်မယ်ဆိုတာကို ‌ရေးထားရမှာပါ။ ခုချိန်မှာ နမူနာ‌အနေနဲ့ User နဲ့ Product ဆိုတဲ့ table နှစ်ခုရှိနေမှာပါ။ေ
+လက်ရှိ repo ထဲမှာ `prisma` ဆိုတဲ့ folder ရှိပါတယ်။ အဲထဲမှာမှ `schema.prisma` က ကျွန်တော်တို့ project ထဲမှာ ဘယ်လို databse table တွေ ပါဝင်မယ်ဆိုတာကို ‌ရေးထားရမှာပါ။ ခုချိန်မှာ နမူနာ‌အနေနဲ့ User နဲ့ Product ဆိုတဲ့ table နှစ်ခုရှိနေမှာပါလိမ့်မယ်။
+```
+model User {
+  userId     String     @id @db.VarChar(12)
+  userName   String     @db.VarChar(100)
+  salt       String     @db.VarChar(16)
+  hash       String     @db.VarChar(64)
+  permission Permission
+  createdAt  DateTime   @default(now()) @db.Timestamp()
+  updatedAt  DateTime   @default(now()) @db.Timestamp()
+}
+
+model Product {
+  productId          String   @id @db.VarChar(12)
+  productName        String   @db.VarChar(100)
+  productDescription String   @db.VarChar(500)
+  productPrice       Int      @db.Int
+  createdAt          DateTime @default(now()) @db.Timestamp()
+  updatedAt          DateTime @default(now()) @db.Timestamp()
+}
+```
