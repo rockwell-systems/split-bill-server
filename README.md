@@ -45,8 +45,8 @@ JWT_PUBLIC_KEY_PATH="/absolute-path-to/public.pub"
 ```
 `DATABASE_URL` ကို No.4 မှာ တည်ဆောက်ခဲ့တဲ့ database info အတိုင်းအစားထိုးပေးပါ။ `JWT_PRIVATE_KEY_PATH` နဲ့ `JWT_PUBLIC_KEY_PATH` ကို No.5 မှာ generate လုပ်ခဲ့တဲ့ key ‌တွေရဲ့ absolute path တွေနဲ့ အစားထိုးပေးပါ။
 
-### Migrate
-လက်ရှိ repo ထဲမှာ `prisma` ဆိုတဲ့ folder ရှိပါတယ်။ အဲထဲမှာမှ `schema.prisma` က ကျွန်တော်တို့ project ထဲမှာ ဘယ်လို databse table တွေ ပါဝင်မယ်ဆိုတာကို ‌ရေးထားရမှာပါ။ ခုချိန်မှာ နမူနာ‌အနေနဲ့ User နဲ့ Product ဆိုတဲ့ table နှစ်ခုရှိနေလိမ့်မယ်။
+### 7. Migrate
+လက်ရှိ source ထဲမှာ `prisma` ဆိုတဲ့ folder ရှိပါတယ်။ အဲထဲမှာမှ `schema.prisma` က ကျွန်တော်တို့ project ထဲမှာ ဘယ်လို databse table တွေ ပါဝင်မယ်ဆိုတာကို ‌ရေးထားရမှာပါ။ ခုချိန်မှာ နမူနာ‌အနေနဲ့ User နဲ့ Product ဆိုတဲ့ table နှစ်ခုရှိနေလိမ့်မယ်။
 ```
 model User {
   userId     String     @id @db.VarChar(12)
@@ -71,3 +71,20 @@ model Product {
 ```
 npx prisma migrate dev
 ```
+run ပြီးပြီဆိုရင်တော့ database table တွေက schema.prisma မှာ declare လုပ်ခဲ့တဲ့အတိုင်း တည်ဆောက်ပြီးသားဖြစ်သွားမှာဖြစ်ပါတယ်။ နောက်ပိုင်းတစ်ခုခုပြုပြင်ချင်တာရှိရင်လဲ schema.prisma ကို ပြင်ပြီး migrate ပြန်လုပ်ပေးရုံပါပဲ။ sql တွေ‌ရေးနေစရာမလိုတဲ့ အတွက် အတော်လေးအဆင်ပြေစေပါတယ်။
+
+### 8. Seeding
+လက်ရှိ source ထဲမှာ နမူနာအနေနဲ့ ရေးထားတဲ့ API တစ်ချို့ရှိပါတယ်။ ဒီ API တွေအတွက် dummy data တွေကို seeding လုပ်ပေးထားတဲ့အတွက် အောက်က command ကို run ပေးပါ
+```
+npx prisma db seed
+```
+
+### 9. Ready
+seeding အထိပြီးပြီဆိုရင်တော့ တကယ် run ကြည့်ဖို့ အဆင်သင့်ဖြစ်နေပါပြီ။ 
+```
+npm run dev
+```
+![image](https://user-images.githubusercontent.com/30652148/208295042-3f1bc66d-dfe9-491c-a6fd-2364fb14dc97.png)
+ဘာပြဿနာမှမရှိခဲ့ဘူးဆိုရင်တော့ အပေါ်အတိုင်း localhost:3333 မှာ up & running ဖြစ်သွားမှာပါ။ 
+<br>
+`http://localhost:3333/docs`ကိုဝင်ကြည့်မယ်ဆိုရင် swagger documentation ကိုပါမြင်ရမှာပါ။
