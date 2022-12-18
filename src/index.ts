@@ -46,7 +46,6 @@ Server.get('/', (requst, reply) => {
 // boot process
 Server.ready((e) => {
     if (e) throw e
-    else console.log('Ready!!!')
 })
 
 // listen
