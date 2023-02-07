@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker'
 import { genSaltSync, hashSync } from 'bcrypt'
 import { Permission, Prisma, PrismaClient } from '@prisma/client'
-import { SYS_CONSTANTS } from '@/constants/systemConstants'
+import { SYS_CONSTANTS } from '../../src/constants/systemConstants'
 
 export const seedUser = async (prisma: PrismaClient) => {
     const users = [
@@ -39,7 +39,6 @@ export const seedUser = async (prisma: PrismaClient) => {
 
         const salt = genSaltSync(SYS_CONSTANTS.SALT_ROUNDS)
         const password = 'password'
-
         const hash = hashSync(password, salt)
 
         dataList.push({
