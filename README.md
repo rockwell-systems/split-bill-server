@@ -7,11 +7,11 @@ Fastify ကိုအသုံးပြုပြီး project အသစ်တစ
  git clone https://github.com/KaungWai/kickstart-fastify.git
 ```
 ### 2. Move to project directory
-```
+``` console
 cd kickstart-fastify
 ```
 ### 3. Install dependencies
-```
+``` console
 npm install
 ```
 ### 4. Setup a database of your choice
@@ -19,7 +19,7 @@ npm install
 
 ### 5. Generate JWT secrets
 ဒီ project မှာ authentication အတွက် JWT ကိုအသုံးပြုထားတဲ့အတွက် private key နဲ့ public key ကို generate လုပ်ပေးဖို့လိုပါတယ်။ သင်က Mac သို့မဟုတ် Linux အသုံးပြုသူဆိုရင် စက်ထဲမှာ openssl ဆိုတဲ့ software က install လုပ်ပြီးသားဖြစ်ဖို့များပါတယ်။ မရှိသေးဘူးရင်တော့ openssl ကို အရင်သွင်းလိုက်ပါ။ generate လုပ်တဲ့ script က ဒီ repo ထဲမှာ ကြို‌ရေးပေးထားပါတယ်။ 
-```
+``` console
 bash ./scripts/keygen.sh
 ```
 ဒါဆိုရင် `./keys` folder ထဲမှာ private key နဲ့ public key ရပါပြီ။
