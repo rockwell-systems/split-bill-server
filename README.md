@@ -88,3 +88,5 @@ npm run dev
 ဘာပြဿနာမှမရှိခဲ့ဘူးဆိုရင်တော့ အပေါ်အတိုင်း localhost:3333 မှာ up & running ဖြစ်သွားမှာပါ။ 
 <br>
 `http://localhost:3333/docs`ကိုဝင်ကြည့်မယ်ဆိုရင် swagger documentation ကိုပါမြင်ရမှာပါ။
+<br><br>
+![image](https://user-images.githubusercontent.com/30652148/217378570-b7edfd58-528d-491f-914f-4445e195b0fb.png)
