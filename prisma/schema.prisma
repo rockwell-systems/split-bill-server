@@ -13,8 +13,8 @@ datasource db {
 model User {
   userId     String     @id @db.VarChar(12)
   userName   String     @db.VarChar(100)
-  salt       String     @db.VarChar(16)
-  hash       String     @db.VarChar(64)
+  salt       String     @db.VarChar(29)
+  hash       String     @db.VarChar(60)
   permission Permission
   createdAt  DateTime   @default(now()) @db.Timestamp()
   updatedAt  DateTime   @default(now()) @db.Timestamp()
