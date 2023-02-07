@@ -2,7 +2,7 @@ import { readFileSync } from 'fs'
 import { FastifyInstance, FastifyPluginOptions } from 'fastify'
 import fs from 'fastify-plugin'
 import fastifyJwt, { FastifyJWTOptions } from '@fastify/jwt'
-import { SYS_CONSTANTS } from '@/constants/sytemConstants'
+import { SYS_CONSTANTS } from '@/constants/systemConstants'
 import env from '@/utils/env'
 
 // read key files

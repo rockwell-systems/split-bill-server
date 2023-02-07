@@ -1,7 +1,7 @@
 import { RouteHandlerMethod } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { nanoid } from 'nanoid'
-import { SYS_CONSTANTS } from '@/constants/sytemConstants'
+import { SYS_CONSTANTS } from '@/constants/systemConstants'
 import { CreateProductRequest } from './request'
 import { CreateProductResponse, CreateProductResult } from './response'
 

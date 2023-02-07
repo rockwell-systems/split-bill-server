@@ -1,4 +1,4 @@
-import { SYS_CONSTANTS } from '@/constants/sytemConstants'
+import { SYS_CONSTANTS } from '@/constants/systemConstants'
 import { readFileSync } from 'fs'
 import path from 'path'
 
