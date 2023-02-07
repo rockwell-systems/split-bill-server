@@ -18,8 +18,8 @@ type JwtPayLoad = {
 const authFactory = (permission: Permission): FastifyAuthFunction => {
     const authFunction: FastifyAuthFunction = function (request, _reply, done: CallableFunction) {
         try {
-            const { apiKey } = request.headers as { apiKey: string }
-            const incomingPayload = this.jwt.verify(apiKey).valueOf() as JwtPayLoad
+            const jwtString = request.cookies.jwt ?? ''
+            const incomingPayload = this.jwt.verify(jwtString).valueOf() as JwtPayLoad
             if (incomingPayload.permission !== permission) {
                 throw this.httpErrors.forbidden('Not enough permission.')
             }

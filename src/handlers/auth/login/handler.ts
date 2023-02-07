@@ -36,7 +36,7 @@ export const loginHandler: RouteHandlerMethod = async function (request, reply):
         sameSite: true,
         maxAge: 2 * 3600 * 1000,
         httpOnly: true,
-        signed: true,
+        path: '/',
     })
 
     reply.status(StatusCodes.OK)

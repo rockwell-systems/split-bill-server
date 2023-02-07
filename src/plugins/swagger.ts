@@ -19,16 +19,9 @@ export default fs(async function (server: FastifyInstance, _options: FastifyPlug
                     description: 'Find more info here',
                 },
                 host: `${env.HOST}:${env.PORT}`,
-                schemes: ['http'],
+                schemes: ['http', 'https'],
                 consumes: ['application/json'],
                 produces: ['application/json'],
-                securityDefinitions: {
-                    apiKey: {
-                        type: 'apiKey',
-                        name: 'apiKey',
-                        in: 'header',
-                    },
-                },
             },
         })
         server.register(fastifySwaggerUi, {

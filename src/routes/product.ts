@@ -17,17 +17,47 @@ const productId = ':productId'
 // Router plugin
 export default fs(async function (server: FastifyInstance) {
     // create a new product
-    server.post(`${rootRoute}`, { schema: createProductSchema }, createProductHandler)
+    server.route({
+        method: 'POST',
+        url: `${rootRoute}`,
+        preHandler: server.auth([server.verifyRW]),
+        schema: createProductSchema,
+        handler: createProductHandler,
+    })
 
     // get a product by id
-    server.get(`${rootRoute}/${productId}`, { schema: getProductByIdSchema }, getProductByIdHandler)
+    server.route({
+        method: 'GET',
+        url: `${rootRoute}/${productId}`,
+        preHandler: server.auth([server.verifyRO, server.verifyRW], { relation: 'or' }),
+        schema: getProductByIdSchema,
+        handler: getProductByIdHandler,
+    })
 
     // get products by filter
-    server.get(`${rootRoute}`, { schema: getProductsSchema }, getProductsHandler)
+    server.route({
+        method: 'GET',
+        url: `${rootRoute}`,
+        preHandler: server.auth([server.verifyRO, server.verifyRW], { relation: 'or' }),
+        schema: getProductsSchema,
+        handler: getProductsHandler,
+    })
 
     // update a product
-    server.put(`${rootRoute}`, { schema: updateProductSchema }, updateProductHandler)
+    server.route({
+        method: 'PUT',
+        url: `${rootRoute}`,
+        preHandler: server.auth([server.verifyRW]),
+        schema: updateProductSchema,
+        handler: updateProductHandler,
+    })
 
     // deleate a product by id
-    server.delete(`${rootRoute}/${productId}`, { schema: deleteProductByIdSchema }, deleteProductByIdHandler)
+    server.route({
+        method: 'DELETE',
+        url: `${rootRoute}/${productId}`,
+        preHandler: server.auth([server.verifyRW]),
+        schema: deleteProductByIdSchema,
+        handler: deleteProductByIdHandler,
+    })
 })

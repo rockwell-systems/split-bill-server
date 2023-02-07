@@ -5,6 +5,7 @@ import fs from 'fastify-plugin'
 
 const cookieOptions: FastifyCookieOptions = {
     secret: 'test',
+    hook: 'onRequest',
     parseOptions: {},
 }
 
