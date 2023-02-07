@@ -1,7 +1,7 @@
-import { nanoid } from 'nanoid'
 import { faker } from '@faker-js/faker'
-import { SHA256 } from 'crypto-js'
+import { genSaltSync, hashSync } from 'bcrypt'
 import { Permission, Prisma, PrismaClient } from '@prisma/client'
+import { SYS_CONSTANTS } from '@/constants/sytemConstants'
 
 export const seedUser = async (prisma: PrismaClient) => {
     const users = [
@@ -37,9 +37,10 @@ export const seedUser = async (prisma: PrismaClient) => {
             continue
         }
 
-        const salt = nanoid(16)
+        const salt = genSaltSync(SYS_CONSTANTS.SALT_ROUNDS)
         const password = 'password'
-        const hash = SHA256(salt + password).toString()
+
+        const hash = hashSync(password, salt)
 
         dataList.push({
             userId: users[i].id,
