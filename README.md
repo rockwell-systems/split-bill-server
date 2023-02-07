@@ -1,5 +1,5 @@
 # Kickstart Fastify
-Fastify ကိုအသုံးပြုပြီး project အသစ်တစ်ခု‌စရေးဖို့ ရှိနေတယ်ဆိုရင် ဒီ repo က မင်းအတွက်အသုံးဝင်မယ်လိုမျှော်လင့်ရပါတယ်။ ဒီ repo ထဲမှာ fasitfy service တစ်ခုရေးသားဖို့ အခြေခံကျတဲ့လိုအပ်ချက်တွေကို ကြိုတင်ထည့်သွင်းပြီးတည်ဆောက်ပေးထားပါတယ်။
+Fastify ကိုအသုံးပြုပြီး REST API အသစ်တစ်ခု‌စရေးဖို့ ရှိနေတယ်ဆိုရင် ဒီ repo က အသုံးဝင်မယ်လိုမျှော်လင့်ရပါတယ်။ ဒီ repo ထဲမှာ fasitfy service တစ်ခုရေးသားဖို့ အခြေခံကျတဲ့လိုအပ်ချက်တွေကို ကြိုတင်ထည့်သွင်းပြီးတည်ဆောက်ပေးထားပါတယ်။
 
 ## Get started
 ### 1. Clone this repo
@@ -15,10 +15,10 @@ cd kickstart-fastify
 npm install
 ```
 ### 4. Setup a database of your choice
-ဒီ project မှာ ORM library အနေနဲ့ prisma ကို အသုံးပြုထားပါတယ်။ prisma ကထင်ရှားတဲ့ RDBMS တွေဖြစ်တဲ့ mysql, sqlite, postgresql, sqlserver တို့ကို support ပေးတဲ့အတွက် အဆင်ပြေရာတစ်ခုခုနဲ့ database တစ်ခုကိုတည်ဆောက်လိုက်ပါ။ 
+ORM library အနေနဲ့ prisma ကို အသုံးပြုထားပါတယ်။ prisma ကထင်ရှားတဲ့ RDBMS တွေဖြစ်တဲ့ mysql, sqlite, postgresql, sqlserver တို့ကို support ပေးတဲ့အတွက် အဆင်ပြေရာတစ်ခုခုနဲ့ database တစ်ခုကိုတည်ဆောက်လိုက်ပါ။ 
 
 ### 5. Generate JWT secrets
-ဒီ project မှာ authentication အတွက် JWT ကိုအသုံးပြုထားတဲ့အတွက် private key နဲ့ public key ကို generate လုပ်ပေးဖို့လိုပါတယ်။ သင်က Mac သို့မဟုတ် Linux အသုံးပြုသူဆိုရင် စက်ထဲမှာ openssl ဆိုတဲ့ software က install လုပ်ပြီးသားဖြစ်ဖို့များပါတယ်။ မရှိသေးဘူးရင်တော့ openssl ကို အရင်သွင်းလိုက်ပါ။ generate လုပ်တဲ့ script က ဒီ repo ထဲမှာ ကြို‌ရေးပေးထားပါတယ်။ 
+authentication အတွက် JWT ကိုအသုံးပြုထားတဲ့အတွက် private key နဲ့ public key ကို generate လုပ်ပေးဖို့လိုပါတယ်။ Mac သို့မဟုတ် Linux အသုံးပြုသူဆိုရင် စက်ထဲမှာ openssl ဆိုတဲ့ software က install လုပ်ပြီးသားဖြစ်ဖို့များပါတယ်။ မရှိသေးဘူးရင်တော့ openssl ကို အရင်သွင်းလိုက်ပါ။ generate လုပ်တဲ့ script က ဒီ repo ထဲမှာ ကြို‌ရေးပေးထားပါတယ်။ 
 ``` console
 bash ./scripts/keygen.sh
 ```
@@ -51,8 +51,8 @@ JWT_PUBLIC_KEY_PATH="/absolute-path-to/public.pub"
 model User {
   userId     String     @id @db.VarChar(12)
   userName   String     @db.VarChar(100)
-  salt       String     @db.VarChar(16)
-  hash       String     @db.VarChar(64)
+  salt       String     @db.VarChar(24)
+  hash       String     @db.VarChar(60)
   permission Permission
   createdAt  DateTime   @default(now()) @db.Timestamp()
   updatedAt  DateTime   @default(now()) @db.Timestamp()
