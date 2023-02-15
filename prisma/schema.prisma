@@ -10,26 +10,65 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  userId     String     @id @db.VarChar(12)
-  userName   String     @db.VarChar(100)
-  salt       String     @db.VarChar(29)
-  hash       String     @db.VarChar(60)
-  permission Permission
-  createdAt  DateTime   @default(now()) @db.Timestamp()
-  updatedAt  DateTime   @default(now()) @db.Timestamp()
+model user {
+  user_id           String @id @db.VarChar(12)
+  user_name         String @db.VarChar(100)
+  user_email        String @db.VarChar(100)
+  is_email_verified FLAG
+  salt              String @db.VarChar(29)
+  hash              String @db.VarChar(60)
+
+  created_at DateTime @default(now()) @db.Timestamp()
+  updated_at DateTime @default(now()) @db.Timestamp()
+
+  debts_as_lender   debt[]              @relation("lender")
+  debts_as_borrower debt[]              @relation("borrower")
+  otps              one_time_password[]
+
+  @@unique([user_email], name: "unique_email")
 }
 
-model Product {
-  productId          String   @id @db.VarChar(12)
-  productName        String   @db.VarChar(100)
-  productDescription String   @db.VarChar(500)
-  productPrice       Int      @db.Int
-  createdAt          DateTime @default(now()) @db.Timestamp()
-  updatedAt          DateTime @default(now()) @db.Timestamp()
+model one_time_password {
+  otp_id   String   @id @db.VarChar(12)
+  user_id  String   @db.VarChar(12)
+  otp      String   @db.VarChar(6)
+  valid_to DateTime @db.Timestamp()
+
+  created_at DateTime @default(now()) @db.Timestamp()
+  updated_at DateTime @default(now()) @db.Timestamp()
+
+  user user @relation(fields: [user_id], references: [user_id])
+
+  @@unique([user_id], name: "unique_user_id")
 }
 
-enum Permission {
-  READ_ONLY
-  READ_WRITE
+model debt {
+  debt_id                String      @id @db.VarChar(12)
+  lender_user_id         String      @db.VarChar(12)
+  borrower_user_id       String      @db.VarChar(12)
+  debt_description       String      @db.VarChar(250)
+  debt_amount            Int
+  debt_status            DEBT_STATUS
+  lender_accepted_date   DateTime    @db.Date
+  lender_declined_date   DateTime    @db.Date
+  borrower_accepted_date DateTime    @db.Date
+  borrower_declined_date DateTime    @db.Date
+
+  created_at DateTime @default(now()) @db.Timestamp()
+  updated_at DateTime @default(now()) @db.Timestamp()
+
+  lender   user @relation("lender", fields: [lender_user_id], references: [user_id])
+  borrower user @relation("borrower", fields: [borrower_user_id], references: [user_id])
+}
+
+enum DEBT_STATUS {
+  WAITING
+  ACCEPTED
+  DECLINED
+  CLEARED
+}
+
+enum FLAG {
+  YES
+  NO
 }

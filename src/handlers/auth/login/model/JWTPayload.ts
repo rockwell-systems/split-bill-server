@@ -1,7 +1,5 @@
-import { Permission } from '@prisma/client'
-
 export type JWTPayload = {
-    userId: string
-    userName: string
-    permission: Permission
+    user_id: string
+    user_name: string
+    user_email: string
 }

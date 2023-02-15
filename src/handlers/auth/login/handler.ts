@@ -5,18 +5,19 @@ import { LoginResponse, LoginResult } from './response'
 import { compareSync } from 'bcrypt'
 import { HttpError } from '@fastify/sensible/lib/httpError'
 import { JWTPayload } from './model/JWTPayload'
+import { FLAG } from '@prisma/client'
 
 export const loginHandler: RouteHandlerMethod = async function (request, reply): Promise<LoginResponse | HttpError> {
     const body = request.body as LoginRequest
-    const errMessage = 'User id or password is invalid.'
+    const errMessage = 'Email or password is invalid.'
 
     const user = await this.prisma.user.findUnique({
         where: {
-            userId: body.userId,
+            user_email: body.user_email,
         },
     })
 
-    if (!user) {
+    if (!user || user.is_email_verified === FLAG.NO) {
         return this.httpErrors.unauthorized(errMessage)
     }
 
@@ -25,9 +26,9 @@ export const loginHandler: RouteHandlerMethod = async function (request, reply):
     }
 
     const payload: JWTPayload = {
-        userId: user.userId,
-        userName: user.userName,
-        permission: user.permission,
+        user_id: user.user_id,
+        user_name: user.user_name,
+        user_email: user.user_email,
     }
 
     const jwt = this.jwt.sign(payload)

@@ -2,7 +2,7 @@ import { field } from '@/schemas/fields'
 import { Static, Type } from '@sinclair/typebox'
 
 export const loginRequest = Type.Object({
-    userId: field.userId,
+    user_email: field.user_email,
     password: Type.String(),
 })
 

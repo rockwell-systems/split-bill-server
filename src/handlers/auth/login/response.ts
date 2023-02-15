@@ -1,5 +1,5 @@
 import { Static, Type } from '@sinclair/typebox'
-import { DefaultResponse } from '@/handlers/base/defaultResponse'
+import { DefaultResponse } from '@/handlers/_shared/defaultResponse'
 
 export const loginResult = Type.Null()
 

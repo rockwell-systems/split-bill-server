@@ -12,6 +12,7 @@ const EnvProps = Type.Object({
     ALLOWED_ORIGINS: Type.String(),
     JWT_PRIVATE_KEY_PATH: Type.String(),
     JWT_PUBLIC_KEY_PATH: Type.String(),
+    SENDINBLUE_API_KEY: Type.String(),
 })
 
 const env: Static<typeof EnvProps> = envSchema({

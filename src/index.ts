@@ -39,7 +39,7 @@ Server.register(fastifyAutoload, { dir: path.join(__dirname, 'routes') })
 
 // root
 Server.get('/', (requst, reply) => {
-    reply.send({ name: 'Kickstart Fastify', version: getAppVersion(), message: 'Welcome to open sea.' })
+    reply.send({ name: 'Pay Together', version: getAppVersion(), message: `Let's pay together!` })
     return
 })
 
