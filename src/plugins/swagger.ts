@@ -10,7 +10,7 @@ export default fs(async function (server: FastifyInstance, _options: FastifyPlug
         server.register(fastifySwagger, {
             swagger: {
                 info: {
-                    title: 'Kickstart Fastify',
+                    title: 'Split Bill',
                     description: 'Swagger API documentation',
                     version: getAppVersion(),
                 },
