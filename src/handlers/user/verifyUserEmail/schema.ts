@@ -8,7 +8,7 @@ const description = `
 
 export const verifyUserEmailSchema: FastifySchema = {
     summary: `verify user email`,
-    tags: ['user'],
+    tags: ['User'],
     description: description,
     body: verifyUserEmailRequest,
     response: {

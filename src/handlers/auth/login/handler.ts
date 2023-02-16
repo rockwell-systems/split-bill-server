@@ -4,7 +4,7 @@ import { LoginRequest } from './request'
 import { LoginResponse, LoginResult } from './response'
 import { compareSync } from 'bcrypt'
 import { HttpError } from '@fastify/sensible/lib/httpError'
-import { JWTPayload } from './model/JWTPayload'
+import { JWTPayload } from '@/handlers/_shared/model/JWTPayload'
 import { FLAG } from '@prisma/client'
 
 export const loginHandler: RouteHandlerMethod = async function (request, reply): Promise<LoginResponse | HttpError> {

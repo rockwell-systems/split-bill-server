@@ -43,16 +43,14 @@ model one_time_password {
 }
 
 model debt {
-  debt_id                String      @id @db.VarChar(12)
-  lender_user_id         String      @db.VarChar(12)
-  borrower_user_id       String      @db.VarChar(12)
-  debt_description       String      @db.VarChar(250)
-  debt_amount            Int
-  debt_status            DEBT_STATUS
-  lender_accepted_date   DateTime    @db.Date
-  lender_declined_date   DateTime    @db.Date
-  borrower_accepted_date DateTime    @db.Date
-  borrower_declined_date DateTime    @db.Date
+  debt_id              String      @id @db.VarChar(12)
+  lender_user_id       String      @db.VarChar(12)
+  borrower_user_id     String      @db.VarChar(12)
+  debt_description     String      @db.VarChar(250)
+  debt_amount          Int
+  debt_status          DEBT_STATUS
+  is_lender_accepted   FLAG?
+  is_borrower_accepted FLAG?
 
   created_at DateTime @default(now()) @db.Timestamp()
   updated_at DateTime @default(now()) @db.Timestamp()

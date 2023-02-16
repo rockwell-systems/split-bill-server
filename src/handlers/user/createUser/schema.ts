@@ -8,7 +8,7 @@ const description = `
 
 export const createUserSchema: FastifySchema = {
     summary: `create a new user`,
-    tags: ['user'],
+    tags: ['User'],
     description: description,
     body: createUserRequest,
     response: {
