@@ -1,7 +1,7 @@
 import { DEBT_STATUS, FLAG } from '@prisma/client'
 import { Type } from '@sinclair/typebox'
 
-const sharedField = {
+const sharedFields = {
     id: Type.String({ minLength: 12, maxLength: 12 }),
     name50: Type.String({ minLength: 2, maxLength: 50 }),
     email: Type.String({ format: 'email' }),
@@ -10,25 +10,29 @@ const sharedField = {
     amount: Type.Number({ minimum: 1 }),
     date: Type.String({ format: 'date' }),
     flag: Type.Enum(FLAG),
+    message: Type.String(),
+    otp: Type.String({ minLength: 6, maxLength: 6 }),
 }
 
-export const field = {
+export const fields = {
     // user
-    user_id: sharedField.id,
-    user_name: sharedField.name50,
-    user_email: sharedField.email,
-    is_email_verified: sharedField.flag,
+    user_id: sharedFields.id,
+    user_name: sharedFields.name50,
+    user_email: sharedFields.email,
+    is_email_verified: sharedFields.flag,
     // debt
-    debt_id: sharedField.id,
-    lender_user_id: sharedField.id,
-    borrower_user_id: sharedField.id,
-    debt_description: sharedField.description,
-    debt_amount: sharedField.amount,
+    debt_id: sharedFields.id,
+    lender_user_id: sharedFields.id,
+    borrower_user_id: sharedFields.id,
+    debt_description: sharedFields.description,
+    debt_amount: sharedFields.amount,
     debt_status: Type.Enum(DEBT_STATUS),
-    lender_accepted_date: sharedField.date,
-    lender_declined_date: sharedField.date,
-    borrower_accepted_date: sharedField.date,
-    borrower_declined_date: sharedField.date,
+    lender_accepted_date: sharedFields.date,
+    lender_declined_date: sharedFields.date,
+    borrower_accepted_date: sharedFields.date,
+    borrower_declined_date: sharedFields.date,
     // other
-    password: sharedField.password,
+    message: sharedFields.message,
+    otp: sharedFields.otp,
+    password: sharedFields.password,
 }

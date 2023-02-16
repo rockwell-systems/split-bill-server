@@ -49,9 +49,6 @@ export const createUserHandler: RouteHandlerMethod = async function (request, re
             where: {
                 user_email: userWithSameEmail.user_email,
             },
-            include: {
-                otps: {},
-            },
         })
         operations.push(deleteUser)
     }
@@ -110,7 +107,7 @@ export const createUserHandler: RouteHandlerMethod = async function (request, re
     // response
     const response: CreateUserResponse = {
         result: result,
-        message: 'New user is successfully created.',
+        message: 'We just sent a one-time-password to your email. Check your inbox including spam folders.',
     }
 
     // 201 created
