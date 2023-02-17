@@ -1,4 +1,4 @@
-import { DEBT_STATUS, FLAG } from '@prisma/client'
+import { FLAG } from '@prisma/client'
 import { Type } from '@sinclair/typebox'
 
 const sharedFields = {
@@ -26,11 +26,10 @@ export const fields = {
     borrower_user_id: sharedFields.id,
     debt_description: sharedFields.description,
     debt_amount: sharedFields.amount,
-    debt_status: Type.Enum(DEBT_STATUS),
-    lender_accepted_date: sharedFields.date,
-    lender_declined_date: sharedFields.date,
-    borrower_accepted_date: sharedFields.date,
-    borrower_declined_date: sharedFields.date,
+    phase1_lender_accepted_date: sharedFields.date,
+    phase1_borrower_accepted_date: sharedFields.date,
+    phase2_lender_accepted_date: sharedFields.date,
+    phase2_borrower_accepted_date: sharedFields.date,
     // other
     message: sharedFields.message,
     otp: sharedFields.otp,

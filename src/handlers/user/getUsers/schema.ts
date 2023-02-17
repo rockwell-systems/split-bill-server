@@ -6,7 +6,7 @@ const description = `
 `
 
 export const getUsersSchema: FastifySchema = {
-    summary: `get usres`,
+    summary: `get users`,
     tags: ['User'],
     description: description,
     response: {

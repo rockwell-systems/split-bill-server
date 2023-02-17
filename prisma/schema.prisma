@@ -43,27 +43,21 @@ model one_time_password {
 }
 
 model debt {
-  debt_id              String      @id @db.VarChar(12)
-  lender_user_id       String      @db.VarChar(12)
-  borrower_user_id     String      @db.VarChar(12)
-  debt_description     String      @db.VarChar(250)
-  debt_amount          Int
-  debt_status          DEBT_STATUS
-  is_lender_accepted   FLAG?
-  is_borrower_accepted FLAG?
+  debt_id                       String    @id @db.VarChar(12)
+  lender_user_id                String    @db.VarChar(12)
+  borrower_user_id              String    @db.VarChar(12)
+  debt_description              String    @db.VarChar(250)
+  debt_amount                   Int
+  phase1_lender_accepted_date   DateTime?
+  phase1_borrower_accepted_date DateTime?
+  phase2_lender_accepted_date   DateTime?
+  phase2_borrower_accepted_date DateTime?
 
   created_at DateTime @default(now()) @db.Timestamp()
   updated_at DateTime @default(now()) @db.Timestamp()
 
   lender   user @relation("lender", fields: [lender_user_id], references: [user_id])
   borrower user @relation("borrower", fields: [borrower_user_id], references: [user_id])
-}
-
-enum DEBT_STATUS {
-  WAITING
-  ACCEPTED
-  DECLINED
-  CLEARED
 }
 
 enum FLAG {

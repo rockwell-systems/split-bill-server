@@ -1,7 +1,6 @@
 import { RouteHanderResult } from '@/handlers/_shared/defaultResponse'
 import { dbUtils } from '@/utils/db'
 import { userUtils } from '@/utils/user'
-import { DEBT_STATUS, FLAG } from '@prisma/client'
 import { RouteHandlerMethod } from 'fastify'
 import { StatusCodes } from 'http-status-codes'
 import { BorrowDebtRequest } from './request'
@@ -37,6 +36,8 @@ export const borrowDebtHandler: RouteHandlerMethod = async function (request, re
         return this.httpErrors.badRequest('Lender user not found.')
     }
 
+    const sysDate = await dbUtils.getSysDate(this.prisma)
+
     // create debt record
     await this.prisma.debt.create({
         data: {
@@ -45,8 +46,7 @@ export const borrowDebtHandler: RouteHandlerMethod = async function (request, re
             lender_user_id: body.lender_user_id,
             debt_description: body.debt_description,
             debt_amount: body.debt_amount,
-            debt_status: DEBT_STATUS.WAITING,
-            is_borrower_accepted: FLAG.YES,
+            phase1_borrower_accepted_date: sysDate,
         },
     })
 
