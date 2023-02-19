@@ -9,9 +9,11 @@ const sharedFields = {
     description: Type.String({ minLength: 1, maxLength: 500 }),
     amount: Type.Number({ minimum: 1 }),
     date: Type.String({ format: 'date' }),
+    dateDB: Type.Any(),
     flag: Type.Enum(FLAG),
     message: Type.String(),
     otp: Type.String({ minLength: 6, maxLength: 6 }),
+    boolean: Type.Boolean(),
 }
 
 export const fields = {
@@ -34,4 +36,6 @@ export const fields = {
     message: sharedFields.message,
     otp: sharedFields.otp,
     password: sharedFields.password,
+    dateDB: sharedFields.dateDB,
+    boolean: sharedFields.boolean,
 }
