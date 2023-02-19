@@ -1,9 +1,10 @@
 import { FastifyInstance } from 'fastify'
 import fs from 'fastify-plugin'
-import { borrowDebtSchema } from '@/handlers/debt/borrow/schema'
-import { borrowDebtHandler } from '@/handlers/debt/borrow/handler'
-import { lendDebtSchema } from '@/handlers/debt/lend/schema'
-import { lendDebtHandler } from '@/handlers/debt/lend/handler'
+
+import { DBT001Handler } from '@/handlers/debt/DBT001Borrow/DBT001Handler'
+import { DBT001Schema } from '@/handlers/debt/DBT001Borrow/DBT001Schema'
+import { DBT002Handler } from '@/handlers/debt/DBT002Lend/DBT002Handler'
+import { DBT002Schema } from '@/handlers/debt/DBT002Lend/DBT002Schema'
 
 const rootRoute = '/debt'
 
@@ -14,8 +15,8 @@ export default fs(async function (server: FastifyInstance) {
         method: 'POST',
         url: `${rootRoute}/borrow`,
         preHandler: server.auth([server.verify]),
-        schema: borrowDebtSchema,
-        handler: borrowDebtHandler,
+        schema: DBT001Schema,
+        handler: DBT001Handler,
     })
 
     // lend money
@@ -23,7 +24,7 @@ export default fs(async function (server: FastifyInstance) {
         method: 'POST',
         url: `${rootRoute}/lend`,
         preHandler: server.auth([server.verify]),
-        schema: lendDebtSchema,
-        handler: lendDebtHandler,
+        schema: DBT002Schema,
+        handler: DBT002Handler,
     })
 })

@@ -1,16 +1,18 @@
 import { FastifyInstance } from 'fastify'
 import fs from 'fastify-plugin'
-import { loginSchema } from '@/handlers/auth/login/schema'
-import { loginHandler } from '@/handlers/auth/login/handler'
-import { logoutSchema } from '@/handlers/auth/logout/schema'
-import { logoutHandler } from '@/handlers/auth/logout/handler'
+
+import { ATH001Handler } from '@/handlers/auth/ATH001Login/ATH001Handler'
+import { ATH001Schema } from '@/handlers/auth/ATH001Login/ATH001Schema'
+import { ATH002Handler } from '@/handlers/auth/ATH002Logout/ATH002Handler'
+import { ATH002Schema } from '@/handlers/auth/ATH002Logout/ATH002Schema'
+
 const rootRoute = '/auth'
 
 // Router plugin
 export default fs(async function (server: FastifyInstance) {
     // login
-    server.post(`${rootRoute}/login`, { schema: loginSchema }, loginHandler)
+    server.post(`${rootRoute}/login`, { schema: ATH001Schema }, ATH001Handler)
 
     // logout
-    server.post(`${rootRoute}/logout`, { schema: logoutSchema }, logoutHandler)
+    server.post(`${rootRoute}/logout`, { schema: ATH002Schema }, ATH002Handler)
 })
