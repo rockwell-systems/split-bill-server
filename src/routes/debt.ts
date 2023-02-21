@@ -7,6 +7,8 @@ import { DBT002Handler } from '@/handlers/debt/DBT002Lend/DBT002Handler'
 import { DBT002Schema } from '@/handlers/debt/DBT002Lend/DBT002Schema'
 import { DBT003Handler } from '@/handlers/debt/DBT003FindDebts/DBT003Handler'
 import { DBT003Schema } from '@/handlers/debt/DBT003FindDebts/DBT003Schema'
+import { DBT004Handler } from '@/handlers/debt/DBT004Phase1Accept/DBT004Handler'
+import { DBT004Schema } from '@/handlers/debt/DBT004Phase1Accept/DBT004Schema'
 
 const rootRoute = '/debt'
 
@@ -37,5 +39,14 @@ export default fs(async function (server: FastifyInstance) {
         preHandler: server.auth([server.verify]),
         schema: DBT003Schema,
         handler: DBT003Handler,
+    })
+
+    // phase1 accept lend/borrow request
+    server.route({
+        method: 'POST',
+        url: `${rootRoute}/phase1/accept/:debt_id`,
+        preHandler: server.auth([server.verify]),
+        schema: DBT004Schema,
+        handler: DBT004Handler,
     })
 })
