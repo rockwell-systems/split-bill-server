@@ -27,7 +27,7 @@ export const DBT004Handler: RouteHandlerMethod = async function (request, reply)
     }
 
     // debt record that does not belong to current user
-    if (userInfo.user_id != debtSearchResult.lender_user_id && userInfo.user_id == debtSearchResult.borrower_user_id) {
+    if (userInfo.user_id != debtSearchResult.lender_user_id && userInfo.user_id != debtSearchResult.borrower_user_id) {
         return this.httpErrors.forbidden()
     }
 
